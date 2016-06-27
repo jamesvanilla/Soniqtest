@@ -1,0 +1,115 @@
+﻿/*==========================================================================
+  MISC
+  ========================================================================== */
+	/*For screens larger that 1280 the column sizes beocme a fixed pixel width*/
+	.container {width: 1140px; margin: 0 auto; padding: 0 70px;}
+	.span1 {width: 201px;}
+	.span2 {width: 429px;}
+	.span3 {width: 657px;}
+	.span4 {width: 885px;}
+	.span5 {width: 1113px;}
+	.span1, .span2, .span3, .span4, .span5 {margin-right: 27px; float: left;}
+	.col1 {width: 271px;}
+	.col2 {width: 568px;}
+	.col3 {width: 865px;}
+	.colLast {width: 235px; margin-left: 14px;}
+	.colLast {float: left;}
+	.col1, .col2, .col3 {margin-right: 26px; float: left;}
+	
+	
+/*==========================================================================
+  HEADER NAVIGATION
+  ========================================================================== */
+	#headNavContainer {width: 1258px; padding: 0 10px 0 12px;}
+	.home #headNavContainer {width: 1258px; padding: 0 10px 0 12px;}
+
+
+
+/*==========================================================================
+  ALL SWIPERS
+  ========================================================================== */
+	.swiper-scrollbar {width: 870px; margin: 0 67px;}
+
+
+/*==========================================================================
+  ACTION BAR
+  ========================================================================== */
+	#actionBar .container {width: 1280px; padding: 0;}
+	#actionBar .container > h2 {width: 1140px; padding: 0 70px;}
+	#actionBar .fadeL {left: -1px;}
+	#actionBar .fadeR {right: -1px;}
+
+
+/*==========================================================================
+  SWIPER GROUP
+  ========================================================================== */
+	.swiperGroup .container {width: 1280px; padding: 0;}
+	.swiperGroup .container > h2 {width: 1140px; padding: 0 70px;}
+	.swiperGroup .fadeL {left: -1px;}
+	.swiperGroup .fadeR {right: -1px;}
+
+
+/*==========================================================================
+  CARD SWIPER
+  ========================================================================== */
+	#card-swiper1 .container {width: 1280px; padding: 0;}
+	#card-swiper1 .container > h2 {width: 1140px; padding: 0 70px;}
+
+
+/*==========================================================================
+  CAROUSEL BANNER
+  ========================================================================== */	
+	#banner .swiper-slide .bannerImg { margin-left: -960px;}
+
+
+/*==========================================================================
+  AWARD BAR
+  ========================================================================== */
+	#swiperAwards .container {width: 1280px; padding: 0;}
+	#swiperAwards .container > h2 {width: 1140px; padding: 0 70px;}
+	#swiperAwards .fadeL {left: -1px;}
+	#swiperAwards .fadeR {right: -1px;}
+	
+.financialJournalism .productNavSpan4 {
+	height:256px;
+}	
+
+/*==========================================================================
+  RISK CAMPAIGN BANNER WITH VIDEO
+  ========================================================================== */
+  .personalVid {
+	position: absolute;
+    color: #fff;
+    top: 15%;
+    z-index: 10;
+    width: 100%;
+}
+.personalVid h2 {
+	width:410px;
+}
+	.personalVid .container, .bannerBtn .container {
+		padding-left: 70px;
+}
+
+/* BLUESTAR SEARCH */
+
+#resultsContainer   {
+	width: 927px;
+}
+
+select {
+	width: 240px;
+	height: 40px;
+}
+input[type="text"],
+input[type="file"] {
+	width: 220px;
+	background: #fff;
+	border:none;
+}
+.dob, #quoteDate label {
+	width: 180px !important;
+}
+.soniq #headNavContainer {
+    width: 1247px;
+}

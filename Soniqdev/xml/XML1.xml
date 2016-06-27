@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfQuoteType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <QuoteType id="902">
+    <iBinderFeePerc xmlns="urn:Corticon">10.000000</iBinderFeePerc>
+    <iCommDiscount xmlns="urn:Corticon">20.000000</iCommDiscount>
+    <iDate xmlns="urn:Corticon">2016-03-01</iDate>
+    <iHasAgeNotDOB xmlns="urn:Corticon">true</iHasAgeNotDOB>
+    <iHasNBComm xmlns="urn:Corticon">true</iHasNBComm>
+    <iHasVatOnComm xmlns="urn:Corticon">true</iHasVatOnComm>
+    <iIsSUFquote xmlns="urn:Corticon">false</iIsSUFquote>
+    <iOutsourceFeePerc xmlns="urn:Corticon">3.000000</iOutsourceFeePerc>
+    <iPTDtaperingYears xmlns="urn:Corticon">5</iPTDtaperingYears>
+  </QuoteType>
+</ArrayOfQuoteType>

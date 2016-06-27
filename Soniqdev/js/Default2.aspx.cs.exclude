@@ -1,0 +1,125 @@
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Configuration;
+//using System.Linq;
+//using System.Web;
+//using System.Web.UI;
+//using System.Web.UI.WebControls;
+//using WcfUtilities.Corticon.ServiceGateway.AspnetProxy;
+//using System.Text;
+//using System.IO;
+//using System.Xml.Serialization;
+//using System.Xml;
+
+//public partial class Default2 : System.Web.UI.Page
+//{
+
+//    protected void Page_Load(object sender, EventArgs e)
+//    {
+//        CargoDecisionService lCargoDecisionService = new CargoDecisionService();
+
+//        lCargoDecisionService.Url = ConfigurationManager.AppSettings.Get("CORTICON_ASPNET_URL");
+
+//        FlightPlanType lFlightPlanType = new FlightPlanType();
+//        CargoType lCargoType = new CargoType();
+//        AircraftType lAircraftType = new AircraftType();
+
+//        lCargoType.weight = 150000;
+//        lCargoType.weightSpecified = true;
+//        lCargoType.volume = 300;
+//        lCargoType.volumeSpecified = true;
+
+//        lAircraftType.tailNumber = "90J";
+
+//        lFlightPlanType.cargo = new CargoType[] { lCargoType };
+//        lFlightPlanType.aircraft = lAircraftType;
+
+//        WorkDocumentsType workDocuments = new WorkDocumentsType();
+//        workDocuments.Items = new object[] { lFlightPlanType };
+//        StringBuilder sb = new StringBuilder("");
+//        sb.Append(CreateXML(workDocuments));
+//        string QuoteInput = sb.ToString();
+//        string lstrServiceName = "Cargo";
+//        string lstrServiceVersion = null;
+//        DateTime lDateTimeServiceDate = DateTime.Now;
+
+//        // The WSDL->Proxy generator creates an additional parameter for the service date, essentially a flag
+//        // indicating whether the date is specified (this is apparently something that is required because the
+//        // timestamp is a complex type and can be null):
+//        bool lbServiceDateSpecified = true;
+//        string lstrUsage = null;
+
+//        Response.Write("Calling service " + lstrServiceName + " using ASP.NET (ASMX) interface...");
+
+//        MessagesType lMessagesType;
+
+//        try
+//        {
+//            lMessagesType = lCargoDecisionService.processRequest(
+//                    ref workDocuments,
+//                    ref lstrServiceName,
+//                    ref lstrServiceVersion,
+//                    ref lDateTimeServiceDate,
+//                    ref lbServiceDateSpecified,
+//                    lstrUsage
+//                    );
+
+//            var llistReturnMessages = new List<string>();
+//            //sb.Append(CreateXML(workDocuments));
+//            //string QuoteInput = sb.ToString();
+
+//            FlightPlanType flightPlanType = new FlightPlanType();
+//            flightPlanType = (FlightPlanType)workDocuments.Items[0];
+//            XmlSerializer serializer = new XmlSerializer(flightPlanType.GetType());
+
+//            using (TextWriter writer = new StreamWriter(@"C:\Users\james_000\Downloads\Xml3.xml"))
+//            {
+//                serializer.Serialize(writer, flightPlanType);
+
+//            }
+
+//            Array.ForEach(lMessagesType.Message,
+//                message => llistReturnMessages.Add(String.Format("{0} for {1}", message.text, message.entityReference.href)));
+
+//            Response.Write("--Messages Returned From Service--");
+
+//            foreach (var item in llistReturnMessages)
+//                Response.Write(item);
+
+//            if (llistReturnMessages.Count == 1)
+//            {
+//                String lstrMessage = llistReturnMessages[0];
+//                if (lstrMessage != null && lstrMessage.StartsWith("Cargo weighing between 150,000 and 200,000 lbs must be carried by plane 747."))
+//                {
+//                    Response.Write("Test execution was successful.");
+//                    return;
+//                }
+//            }
+
+//            throw new Exception("Test rule set did not generate the expected message.");
+//        }
+//        catch (Exception ex)
+//        {
+//            Response.Write(ex);
+//            return;
+//        }
+//    }
+//    public string CreateXML(Object ClassObject)
+//    {
+//        try
+//        {
+//            XmlSerializer xmlSerializer = new XmlSerializer(ClassObject.GetType());
+//            StringWriter sw = new StringWriter();
+//            XmlTextWriter tw = new XmlTextWriter(sw);
+//            xmlSerializer.Serialize(tw, ClassObject);
+//            return sw.ToString();
+//        }
+//        catch (Exception ex)
+//        {
+//            //Handle Exception Code 
+//            return ex.ToString();
+//        }
+
+
+//    }
+//}

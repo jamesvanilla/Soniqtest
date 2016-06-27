@@ -1,0 +1,153 @@
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Web;
+//using System.Web.UI;
+//using System.Web.UI.WebControls;
+//using WcfUtilities.Corticon.ServiceGateway.AspnetProxy;
+//using System.Configuration;
+//using System.IO;
+//using System.Xml;
+//using System.Xml.Serialization;
+//using System.Text;
+//public partial class Default3 : System.Web.UI.Page
+//{
+//    protected void Page_Load(object sender, EventArgs e)
+//    {
+//        servertestDecisionService lservertestDecisionService = new servertestDecisionService();
+//        lservertestDecisionService.Url = ConfigurationManager.AppSettings.Get("CORTICON_ASPNET_URL");
+
+
+//        ChildType lChildType = new ChildType();
+//        //lChildType.id = "1";
+//        lChildType.age = 10;
+//        lChildType.ageSpecified = true;
+
+//        ChildType lChildType1 = new ChildType();
+//        //lChildType.id = "1";
+//        lChildType1.age = 10;
+//        lChildType1.ageSpecified = true;
+
+//        FamilyType lFamilyType = new FamilyType();
+//        //lFamilyType.id = "Family_id_1";
+//        lFamilyType.cost = 0.0000M;
+//        lFamilyType.costSpecified = true;
+//        lFamilyType.size = 0;
+//        lFamilyType.sizeSpecified = true;
+//        lFamilyType.child = new ChildType[] { lChildType, lChildType1 };
+
+
+//        ChildType lChildType2 = new ChildType();
+//        //lChildType.id = "1";
+//        lChildType2.age = 12;
+//        lChildType2.ageSpecified = true;
+
+//        ChildType lChildType3 = new ChildType();
+//        //lChildType.id = "1";
+//        lChildType3.age = 14;
+//        lChildType3.ageSpecified = true;
+
+//        FamilyType lFamilyType1 = new FamilyType();
+//        //lFamilyType.id = "Family_id_1";
+//        lFamilyType1.cost = 0.0000M;
+//        lFamilyType1.costSpecified = true;
+//        lFamilyType1.size = 0;
+//        lFamilyType1.sizeSpecified = true;
+//        lFamilyType1.child = new ChildType[] { lChildType2, lChildType3 };
+//        CommunityType lCommunityType = new CommunityType();
+//        //lCommunityType.id = "1";
+//        lCommunityType.cost = 0.00000M;
+//        lCommunityType.costSpecified = true;
+//        lCommunityType.size = 0;
+//        lCommunityType.sizeSpecified = true;
+//        lCommunityType.family = new FamilyType[] { lFamilyType, lFamilyType1 };
+
+//        StringBuilder sb = new StringBuilder("");
+//        WorkDocumentsType workDocuments = new WorkDocumentsType();
+//        workDocuments.Items = new object[] { lCommunityType };
+//        string lstrServiceName = "FamilyTestNoDB55";
+//        string lstrServiceVersion = null;
+//        DateTime lDateTimeServiceDate = DateTime.Now;
+//        //sb.Append(CreateXML(workDocuments));
+//        //string QuoteInput = sb.ToString();
+//        // The WSDL->Proxy generator creates an additional parameter for the service date, essentially a flag
+//        // indicating whether the date is specified (this is apparently something that is required because the
+//        // timestamp is a complex type and can be null):
+//        bool lbServiceDateSpecified = true;
+//        string lstrUsage = null;
+
+//        Response.Write("Calling service " + lstrServiceName + " using ASP.NET (ASMX) interface...");
+
+//        MessagesType lMessagesType;
+
+//        try
+//        {
+//            lMessagesType = lservertestDecisionService.processRequest(
+//                        ref workDocuments,
+//                        ref lstrServiceName,
+//                        ref lstrServiceVersion,
+//                        ref lstrUsage
+//                        );
+
+//            var llistReturnMessages = new List<string>();
+//            //sb.Append(CreateXML(workDocuments));
+//            //string QuoteInput = sb.ToString();
+//            //object[] workDocument = workDocuments.Items;
+
+//            CommunityType CommunityType = new CommunityType();
+//            CommunityType = (CommunityType)workDocuments.Items[0];
+//            XmlSerializer serializer = new XmlSerializer(CommunityType.GetType());
+
+//            using (TextWriter writer = new StreamWriter(@"C:\Users\james_000\Downloads\Xml6.xml"))
+//            {
+//                serializer.Serialize(writer, CommunityType);
+
+//            }
+
+
+//            Array.ForEach(lMessagesType.Message,
+//                message => llistReturnMessages.Add(String.Format("{0} for {1}", message.text, message.entityReference.href)));
+
+//            Response.Write("--Messages Returned From Service--");
+
+//            foreach (var item in llistReturnMessages)
+//                Response.Write(item);
+
+//            //if (llistReturnMessages.Count == 1)
+//            //{
+//            //    String lstrMessage = llistReturnMessages[0];
+//            //    if (lstrMessage != null && lstrMessage.StartsWith("FamilyTest"))
+//            //    {
+//            //        Response.Write("Test execution was successful.");
+//            //        return;
+//            //    }
+//            //}
+
+//            //throw new Exception("Test rule set did not generate the expected message.");
+//        }
+//        catch (Exception ex)
+//        {
+//            Response.Write(ex);
+//            return;
+//        }
+//    }
+//    public string CreateXML(Object ClassObject)
+//    {
+//        try
+//        {
+//            XmlSerializer xmlSerializer = new XmlSerializer(ClassObject.GetType());
+//            StringWriter sw = new StringWriter();
+//            XmlTextWriter tw = new XmlTextWriter(sw);
+//            xmlSerializer.Serialize(tw, ClassObject);
+//            return sw.ToString();
+//        }
+//        catch (Exception ex)
+//        {
+//            //Handle Exception Code 
+//            return ex.ToString();
+//        }
+
+
+//    }
+
+//}
